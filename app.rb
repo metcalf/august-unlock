@@ -16,7 +16,7 @@ class App < Sinatra::Base
             }
         )
 
-        puts "unlock response: #{resp.status} #{resp.body}"
+        $stderr.puts("unlock response: #{resp.status} #{resp.body}")
 
         resp.status == 200
     end
