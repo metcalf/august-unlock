@@ -22,10 +22,22 @@ class App < Sinatra::Base
     end
 
     get "/" do
-        "Hello world! #{Time.now}"
+        "Nothing to see here"
     end
 
     get "/unlock" do
         "did: #{unlock}"
+    end
+
+    get "/calisone" do
+        if Time.now < Time.new(2019, 4, 17, 17) # 10AM in UTC
+            "It's too soon! Reload this page during the party or call us if you're having trouble."
+        elsif Time.now > Time.new(2019, 4, 17, 23) # 4PM in UTC
+            "Party's over... go home!"
+        elsif unlock
+            "It should be unlocked now. Close the door firmly behind you and it'll lock itself in a few minutes."
+        else
+            "Sorry, there was a problem unlocking the door. You can reload the page to try again or give us a call."
+        end
     end
 end
