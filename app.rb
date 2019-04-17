@@ -25,10 +25,6 @@ class App < Sinatra::Base
         "Nothing to see here"
     end
 
-    get "/unlock" do
-        "did: #{unlock}"
-    end
-
     get "/calisone" do
         if Time.now < Time.new(2019, 4, 17, 17) # 10AM in UTC
             "It's too soon! Reload this page during the party or call us if you're having trouble."
