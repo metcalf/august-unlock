@@ -26,10 +26,10 @@ class App < Sinatra::Base
     end
 
     get "/calisone" do
-        if Time.now < Time.new(2019, 4, 17, 17) # 10AM in UTC
+        if Time.now < Time.new(2019, 4, 20, 17) # 10AM in UTC
             "It's too soon! Reload this page during the party or call us if you're having trouble."
-        elsif Time.now > Time.new(2019, 4, 17, 23) # 4PM in UTC
-            "Party's over... go home!"
+        elsif Time.now > Time.new(2019, 4, 21, 0) # 5PM in UTC
+            "Too late! Call us if you think this is a mistake."
         elsif unlock
             "It should be unlocked now. Close the door firmly behind you and it'll lock itself in a few minutes."
         else
