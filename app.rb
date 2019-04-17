@@ -5,7 +5,7 @@ class App < Sinatra::Base
     AUGUST_API_KEY = "79fd0eb6-381d-4adf-95a0-47721289d1d9"
 
     def unlock
-        Excon.put(
+        resp = Excon.put(
             "https://api-production.august.com/remoteoperate/#{ENV['LOCK_ID']}/lock",
             headers: {
                 "x-august-api-key" => AUGUST_API_KEY,
@@ -15,6 +15,10 @@ class App < Sinatra::Base
                 "Accept-Version" => "0.0.1",
             }
         )
+
+        puts "unlock response: #{resp.status} #{resp.body}"
+
+        resp.status == 200
     end
 
     get "/" do
@@ -22,7 +26,6 @@ class App < Sinatra::Base
     end
 
     get "/unlock" do
-        unlock
-        "done"
+        "did: #{unlock}"
     end
 end
