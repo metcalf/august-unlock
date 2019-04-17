@@ -13,6 +13,7 @@ class App < Sinatra::Base
                 "x-august-access-token" => ENV['AUGUST_ACCESS_TOKEN'],
                 "User-Agent" => "August/Luna-3.2.2",
                 "Accept-Version" => "0.0.1",
+                "Content-Type" => "application/json",
             }
         )
 
